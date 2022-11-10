@@ -1,4 +1,4 @@
 <div > 
-   <h3> {{book.title}} by {{book.author.name}}</h3> 
+   <h3 *ngIf="book.author && book.title" > {{book.title}} by {{book.author.name}}</h3> 
 </div>
 

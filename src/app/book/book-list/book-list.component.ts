@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/book';
+import { BookService } from 'src/app/book.service';
 import { DummybookService } from 'src/app/dummybook.service';
 
 @Component({
@@ -14,12 +15,12 @@ export class BookListComponent implements OnInit {
 
   currentBook : Book | undefined;
 
-  constructor(private bookService: DummybookService) { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe({
       next: (value: Book[] )=> this.bookList = value,
-      complete: () => console.log('book service finished'),
+      complete: () => console.log('book service finished ' + this.bookList[0].title),
       error: (mess) => this.message = mess
     })
 
