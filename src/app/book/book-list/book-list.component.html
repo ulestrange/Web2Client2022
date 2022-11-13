@@ -1,5 +1,8 @@
 <p>book-list works !</p>
 
+<app-sample-form></app-sample-form>
+
+
 <h2 *ngIf="message">{{message}}</h2>
 
  
@@ -9,6 +12,8 @@
 (click)='clicked(b)'></app-book-row>
 
 <app-book-details *ngIf="currentBook" [book]="currentBook">
+
+
 
 
 
