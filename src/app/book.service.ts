@@ -30,6 +30,43 @@ export class BookService {
 
   }
 
+  getBook(id: String): Observable<Book> {
+
+    console.log("get books called" );
+
+    return this.http.get<Book>(`${this.dataUri}/${id}`)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+
+  }
+
+  deleteBook(id: string): Observable<unknown> {
+    const url = `${this.dataUri}/${id}`; // DELETE 
+    return this.http.delete(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateBook(id: string, book: Book): Observable<Book> {
+    console.log('subscribing to update/' + id);
+    let bookURI: string = this.dataUri + '/' + id;
+    return this.http.put<Book>(bookURI, book)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  addBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.dataUri, book)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+
   //taken from: https://angular.io/guide/http
 
   private handleError(error: HttpErrorResponse) {
