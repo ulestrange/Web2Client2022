@@ -30,6 +30,7 @@ export class BookService {
 
   }
 
+
   getBook(id: String): Observable<Book> {
 
     console.log("get books called" );
@@ -58,6 +59,7 @@ export class BookService {
         catchError(this.handleError)
       )
   }
+
 
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.dataUri, book)
