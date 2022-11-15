@@ -1,5 +1,6 @@
 <p>book-list works !</p>
 
+
 <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
   <strong>Opps</strong> {{message}}
   <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
@@ -11,11 +12,37 @@
 
  
 
-<app-book-row *ngFor="let b of bookList"
-[book]="b"
-(click)='clicked(b)'></app-book-row>
 
-<app-book-details *ngIf="currentBook" [book]="currentBook">
+
+
+<div class="container-fluid">
+
+<app-book-form></app-book-form>
+
+
+
+<h2 *ngIf="message">{{message}}</h2>
+
+    <!-- <app-sample-form></app-sample-form> -->
+
+
+    <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
+        <strong>Opps</strong> {{message}}
+        <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+      </div>
+    
+     
+    
+    <app-book-row *ngFor="let b of bookList"
+    [book]="b"
+    (click)='clicked(b)'></app-book-row>
+    
+    <app-book-details *ngIf="currentBook" [book]="currentBook"></app-book-details>
+
+</div>
+>>>>>>> 39bf1893d83e374bf2a549048bee02c8669af87d
+
+
 
 
 
