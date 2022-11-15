@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BookService } from 'src/app/book.service';
+//import { BookService } from 'src/app/book.service';
 
 @Component({
   selector: 'app-book-form',
@@ -10,7 +10,7 @@ import { BookService } from 'src/app/book.service';
 export class BookFormComponent implements OnInit {
 
   bookForm : FormGroup = new FormGroup({
-    title: new FormControl ('', [Validators.required, Validators.minLength(3)]),
+    title: new FormControl ('', [Validators.required, Validators.minLength(4)]),
     year_written: new FormControl ('', [Validators.required]),
     edition: new FormControl(''),
     price: new FormControl,
@@ -18,14 +18,13 @@ export class BookFormComponent implements OnInit {
       name: new FormControl(''),
       nationality: new FormControl('')
     })
-
   })
 
  message: string = "";
 
 
   
-  constructor(private bookService: BookService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -33,15 +32,6 @@ export class BookFormComponent implements OnInit {
   onSubmit(){
     console.log('forms submitted with ');
     console.table(this.bookForm.value);
-
-    this.bookService.addBook({ ...this.bookForm.value})
-    .subscribe({
-      next: book => {
-        console.log(JSON.stringify(book) + ' has been added');
-        this.message = "new book has been added";
-      },
-      error: (err) => this.message = err
-    });
   }
 
 

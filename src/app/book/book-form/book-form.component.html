@@ -2,41 +2,41 @@
 
 {{message}}
 
- <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()" >
+ <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()" class="form-group" class="container-md">
 
-    <div>
+    <div class="mb-3">
         <label for="title"> Title</label>
-        <input id="title" type="text" formControlName="title">
+        <input id="title" type="text" formControlName="title" class="form-control">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="year_written"> Year Written</label>
-        <input id="year_written" type="number" formControlName="year_written">
+        <input id="year_written" type="number" formControlName="year_written" class="form-control">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="edition">Edition</label>
-        <input id="edition" type="text" formControlName="edition">
+        <input id="edition" type="text" formControlName="edition" class="form-control">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="price"> Price</label>
-        <input id="price" type="price" formControlName="price">
+        <input id="price" type="price" formControlName="price" class="form-control">
     </div>
 
-<fieldset formGroupName="author">
+<div formGroupName="author">
     <legend>Author</legend>
-       <div>
+       <div class="mb-3">
         <label for="name">Name</label>
-        <input id="name" type="text" formControlName="name">
+        <input id="name" type="text" formControlName="name" class="form-control">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="nationality">Nationality</label>
-        <input id="nationality" type="text" formControlName="nationality">
+        <input id="nationality" type="text" formControlName="nationality" class="form-control">
     </div>
-</fieldset>
+</div>
 
 
     <button type="submit" [disabled] = "!bookForm.valid" >Submit</button>
 
-    <div *ngIf="title && title.invalid && title.touched"  class="alert alert-danger" >
+    <div *ngIf="title?.invalid && title?.touched"  class="alert alert-danger" >
         Title is required and must be at least 4 letters
     </div>
 
