@@ -10,7 +10,10 @@ export class SampleFormComponent implements OnInit {
 
   bookForm : FormGroup = new FormGroup({
     title: new FormControl ('', [Validators.required, Validators.minLength(3)]),
-    year_written: new FormControl ('', [Validators.required])
+    year_written: new FormControl ('', [Validators.required]),
+    edition: new FormControl(''),
+    price: new FormControl
+
   })
 
 
@@ -23,7 +26,8 @@ export class SampleFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('forms submitted with ' + this.bookForm.value)
+    console.log('forms submitted with ' + this.bookForm.value);
+    console.table(this.bookForm.value)
   }
 
 
