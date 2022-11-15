@@ -7,23 +7,12 @@
 </div>
 
 
-<app-book-form></app-book-form>
-
 
  
-
-
-
-
 <div class="container-fluid">
 
-<app-book-form></app-book-form>
 
 
-
-<h2 *ngIf="message">{{message}}</h2>
-
-    <!-- <app-sample-form></app-sample-form> -->
 
 
     <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
@@ -31,7 +20,7 @@
         <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
       </div>
     
-     
+      <app-book-form></app-book-form>
     
     <app-book-row *ngFor="let b of bookList"
     [book]="b"
@@ -40,7 +29,6 @@
     <app-book-details *ngIf="currentBook" [book]="currentBook"></app-book-details>
 
 </div>
->>>>>>> 39bf1893d83e374bf2a549048bee02c8669af87d
 
 
 
