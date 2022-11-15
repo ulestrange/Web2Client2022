@@ -12,7 +12,11 @@ export class SampleFormComponent implements OnInit {
     title: new FormControl ('', [Validators.required, Validators.minLength(3)]),
     year_written: new FormControl ('', [Validators.required]),
     edition: new FormControl(''),
-    price: new FormControl
+    price: new FormControl,
+    author: new FormGroup({
+      name: new FormControl(''),
+      nationality: new FormControl('')
+    })
 
   })
 
@@ -26,7 +30,7 @@ export class SampleFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('forms submitted with ' + this.bookForm.value);
+    console.log('forms submitted with ');
     console.table(this.bookForm.value)
   }
 

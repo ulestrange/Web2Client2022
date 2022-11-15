@@ -1,4 +1,4 @@
-<p>sample-form works!</p>
+<h2>Please Enter Data about a book</h2>
 
  <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()" >
 
@@ -18,14 +18,20 @@
         <label for="price"> Price</label>
         <input id="price" type="price" formControlName="price">
     </div>
-    <!-- <div>
-        <label for="year_written"> Year Written</label>
-        <input id="year_written" type="number" formControlName="year_written">
+
+<fieldset formGroupName="author">
+    <legend>Author</legend>
+       <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name">
     </div>
     <div>
-        <label for="year_written"> Year Written</label>
-        <input id="year_written" type="number" formControlName="year_written">
-    </div> -->
+        <label for="nationality">Nationality</label>
+        <input id="nationality" type="text" formControlName="nationality">
+    </div>
+</fieldset>
+
+
     <button type="submit" [disabled] = "!bookForm.valid" >Submit</button>
 
     <div *ngIf="title && title.invalid && title.touched"  class="alert alert-danger" >
