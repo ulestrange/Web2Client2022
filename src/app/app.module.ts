@@ -8,6 +8,8 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { BookRowComponent } from './book/book-row/book-row.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SampleFormComponent } from './book/sample-form/sample-form.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import {  HttpClientModule } from '@angular/common/http';
     BookComponent,
     BookListComponent,
     BookDetailsComponent,
-    BookRowComponent
+    BookRowComponent,
+    SampleFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

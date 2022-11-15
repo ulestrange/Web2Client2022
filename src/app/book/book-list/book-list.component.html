@@ -2,6 +2,11 @@
 
 <div class="container-fluid">
 
+<app-sample-form></app-sample-form>
+
+
+<h2 *ngIf="message">{{message}}</h2>
+
     <!-- <app-sample-form></app-sample-form> -->
 
 
@@ -19,6 +24,8 @@
     <app-book-details *ngIf="currentBook" [book]="currentBook"></app-book-details>
 
 </div>
+
+
 
 
 
