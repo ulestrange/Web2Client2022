@@ -20,10 +20,9 @@ export class BookFormComponent implements OnInit {
     })
   })
 
- message: string = "";
 
 
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,6 +31,7 @@ export class BookFormComponent implements OnInit {
   onSubmit(){
     console.log('forms submitted with ');
     console.table(this.bookForm.value);
+    
   }
 
 
