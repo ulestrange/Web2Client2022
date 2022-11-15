@@ -1,5 +1,7 @@
 <h2>Please Enter Data about a book</h2>
 
+{{message}}
+
  <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()" >
 
     <div>
@@ -14,10 +16,10 @@
         <label for="edition">Edition</label>
         <input id="edition" type="text" formControlName="edition">
     </div>
-    <div>
+    <!-- <div>
         <label for="price"> Price</label>
         <input id="price" type="price" formControlName="price">
-    </div>
+    </div> -->
 
 <fieldset formGroupName="author">
     <legend>Author</legend>

@@ -30,6 +30,14 @@ export class BookService {
 
   }
 
+
+  addBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.dataUri, book)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   //taken from: https://angular.io/guide/http
 
   private handleError(error: HttpErrorResponse) {
