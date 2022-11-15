@@ -1,14 +1,26 @@
 <p>book-list works !</p>
 
-<h2 *ngIf="message">{{message}}</h2>
+<div class="container-fluid">
 
- 
+    <!-- <app-sample-form></app-sample-form> -->
 
-<app-book-row *ngFor="let b of bookList"
-[book]="b"
-(click)='clicked(b)'></app-book-row>
 
-<app-book-details *ngIf="currentBook" [book]="currentBook">
+    <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
+        <strong>Opps</strong> {{message}}
+        <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+      </div>
+    
+     
+    
+    <app-book-row *ngFor="let b of bookList"
+    [book]="b"
+    (click)='clicked(b)'></app-book-row>
+    
+    <app-book-details *ngIf="currentBook" [book]="currentBook"></app-book-details>
+
+</div>
+
+
 
 
 

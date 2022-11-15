@@ -32,4 +32,8 @@ export class BookListComponent implements OnInit {
   }
 
 
+  dismissAlert() {
+    this.message = "";
+  }
+  
 }
