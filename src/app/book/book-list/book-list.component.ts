@@ -41,6 +41,36 @@ export class BookListComponent implements OnInit {
     this.showBookForm = true;
   }
 
+  openEditBook(): void {
+    this.showBookForm = true;
+  }
+
+  deleteBook() {
+    console.log('deleting a book ');
+    if (this.currentBook) {
+      this.bookService.deleteBook(this.currentBook._id)
+        .subscribe({
+          next: book => {
+            console.log(JSON.stringify(book) + ' has been added');
+            this.message = "book has been deleted";
+          },
+          error: (err) => this.message = err
+        });
+    }
+
+    // so the updated list appears
+
+    // this.bookService.getBooks().subscribe({
+    //   next: (value: Book[]) => this.bookList = value,
+    //   complete: () => console.log('book service finished'),
+    //   error: (mess) => this.message = mess
+    // })
+
+    this.ngOnInit();
+    this.currentBook=undefined;
+
+  }
+
   bookFormClose(book?: any): void {
     this.showBookForm = false;
     console.table(book);
