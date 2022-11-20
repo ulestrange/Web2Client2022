@@ -14,6 +14,7 @@ export class BookListComponent implements OnInit {
   message: string = "";
 
   currentBook : Book | undefined;
+  showBookForm: Boolean = false;
 
   constructor(private bookService: BookService) { }
 
@@ -33,6 +34,46 @@ export class BookListComponent implements OnInit {
 
   dismissAlert() {
     this.message = "";
+  }
+
+  openAddBook(): void {
+    this.currentBook = undefined;
+    this.showBookForm = true;
+  }
+
+  bookFormClose(book?: any): void {
+    this.showBookForm = false;
+    console.table(book);
+    if (book == null) {
+      this.message = "form closed without saving";
+      this.currentBook = undefined
+    }
+    else if (this.currentBook == null) {
+     this.addNewBook(book);
+    }
+    else {
+   //   this.updateBook(this.currentBook._id, book)
+    }
+  }
+
+  addNewBook(newBook: Book): void {
+    console.log('adding new book ' + JSON.stringify(newBook));
+    this.bookService.addBook({ ...newBook })
+      .subscribe({
+        next: book => {
+          console.log(JSON.stringify(book) + ' has been added');
+          this.message = "new book has been added";
+        },
+        error: (err) => this.message = err
+      });
+
+    // so the updated list appears
+
+    this.bookService.getBooks().subscribe({
+      next: (value: Book[]) => this.bookList = value,
+      complete: () => console.log('book service finished'),
+      error: (mess) => this.message = mess
+    })
   }
 
   

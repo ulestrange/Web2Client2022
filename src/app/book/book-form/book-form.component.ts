@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Book } from 'src/app/book';
 //import { BookService } from 'src/app/book.service';
 
 @Component({
@@ -8,6 +9,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnInit {
+
+  @Output() bookFormClose = new EventEmitter<Book>();
+
+  @Input() book? : Book;
 
   bookForm : FormGroup = new FormGroup({
     title: new FormControl ('', [Validators.required, Validators.minLength(4)]),
@@ -29,9 +34,9 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('forms submitted with ');
+    console.log('forms submitted with: ');
     console.table(this.bookForm.value);
-    
+    this.bookFormClose.emit(this.bookForm.value);
   }
 
 
