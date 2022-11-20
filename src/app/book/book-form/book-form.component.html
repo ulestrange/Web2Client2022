@@ -1,5 +1,7 @@
 <h2>Please Enter Data about a book</h2>
 
+<button type="button" class="btn-close" aria-label="Close" (click)="closeForm()"></button>
+
 
  <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()" class="form-group" class="container-md">
 

@@ -71,6 +71,27 @@ export class BookListComponent implements OnInit {
 
   }
 
+  updateBook(id: string, book: Book): void {
+    console.log('updating ');
+    console.table (book);
+    this.bookService.updateBook(id, book)
+      .subscribe({
+        next: book => {
+          console.log(JSON.stringify(book) + ' has been updated');
+          this.message = " book has been updated";
+        },
+        error: (err) => this.message = err
+      });
+    // so the updated list appears
+
+    this.bookService.getBooks().subscribe({
+      next: (value: Book[]) => this.bookList = value,
+      complete: () => console.log('book service finished'),
+      error: (mess) => this.message = mess
+    })
+  }
+
+
   bookFormClose(book?: any): void {
     this.showBookForm = false;
     console.table(book);
@@ -82,7 +103,7 @@ export class BookListComponent implements OnInit {
      this.addNewBook(book);
     }
     else {
-   //   this.updateBook(this.currentBook._id, book)
+     this.updateBook(this.currentBook._id, book)
     }
   }
 
