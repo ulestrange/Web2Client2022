@@ -45,26 +45,25 @@ export class BookListComponent implements OnInit {
     this.showBookForm = true;
   }
 
+
+// note: the method below will delet a book once the button is pressed.
+// this is not great UX, users should normally be asked to verify that they want to delete something.
+// consider how you might implement that.
+
   deleteBook() {
     console.log('deleting a book ');
     if (this.currentBook) {
       this.bookService.deleteBook(this.currentBook._id)
         .subscribe({
           next: book => {
-            console.log(JSON.stringify(book) + ' has been added');
-            this.message = "book has been deleted";
+            console.log(JSON.stringify(book) + ' has been delettted');
+            this.message = "book has been delettteed";
           },
           error: (err) => this.message = err
         });
     }
 
     // so the updated list appears
-
-    // this.bookService.getBooks().subscribe({
-    //   next: (value: Book[]) => this.bookList = value,
-    //   complete: () => console.log('book service finished'),
-    //   error: (mess) => this.message = mess
-    // })
 
     this.ngOnInit();
     this.currentBook=undefined;
@@ -84,11 +83,7 @@ export class BookListComponent implements OnInit {
       });
     // so the updated list appears
 
-    this.bookService.getBooks().subscribe({
-      next: (value: Book[]) => this.bookList = value,
-      complete: () => console.log('book service finished'),
-      error: (mess) => this.message = mess
-    })
+    this.ngOnInit();
   }
 
 
@@ -120,12 +115,17 @@ export class BookListComponent implements OnInit {
 
     // so the updated list appears
 
-    this.bookService.getBooks().subscribe({
-      next: (value: Book[]) => this.bookList = value,
-      complete: () => console.log('book service finished'),
-      error: (mess) => this.message = mess
-    })
+   this.ngOnInit();
   }
 
   
+  isSelected(book: Book): boolean {
+    if (!book || !this.currentBook) {
+      return false;
+    }
+    else {
+      return book._id === this.currentBook._id;
+    }
+  }
+
 }
