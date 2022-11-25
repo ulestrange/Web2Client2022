@@ -32,6 +32,6 @@
     ></app-book-row>
   </div>
 
-  <app-book-details *ngIf="currentBook" [book]="currentBook"></app-book-details>
+  <app-book-details *ngIf="currentBook && !showBookForm" [book]="currentBook"></app-book-details>
 
 </div>
