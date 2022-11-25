@@ -8,8 +8,11 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { BookRowComponent } from './book/book-row/book-row.component';
 import {  HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BookFormComponent } from './book/book-form/book-form.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,17 @@ import {BookFormComponent } from './book/book-form/book-form.component';
     BookListComponent,
     BookDetailsComponent,
     BookRowComponent,
-    BookFormComponent
+    BookFormComponent,
+    SignUpComponent,
+    SignInComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
