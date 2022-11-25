@@ -7,12 +7,13 @@ import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { BookRowComponent } from './book/book-row/book-row.component';
-import {  HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BookFormComponent } from './book/book-form/book-form.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { JwtInterceptor } from './helpers/jwtinterceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ProfileComponent } from './user/profile/profile.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

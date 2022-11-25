@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {Amplify,  Auth } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 
 import { environment } from '../environments/environment';
 
@@ -40,16 +40,16 @@ export class CognitoService {
 
   public signIn(user: IUser): Promise<any> {
     return Auth.signIn(user.email, user.password)
-    .then(() => {
-      this.authenticationSubject.next(true);
-    });
+      .then(() => {
+        this.authenticationSubject.next(true);
+      });
   }
 
   public signOut(): Promise<any> {
     return Auth.signOut()
-    .then(() => {
-      this.authenticationSubject.next(false);
-    });
+      .then(() => {
+        this.authenticationSubject.next(false);
+      });
   }
 
   public isAuthenticated(): Promise<boolean> {
@@ -57,15 +57,15 @@ export class CognitoService {
       return Promise.resolve(true);
     } else {
       return this.getUser()
-      .then((user: any) => {
-        if (user) {
-          return true;
-        } else {
+        .then((user: any) => {
+          if (user) {
+            return true;
+          } else {
+            return false;
+          }
+        }).catch(() => {
           return false;
-        }
-      }).catch(() => {
-        return false;
-      });
+        });
     }
   }
 
@@ -75,9 +75,32 @@ export class CognitoService {
 
   public updateUser(user: IUser): Promise<any> {
     return Auth.currentUserPoolUser()
-    .then((cognitoUser: any) => {
-      return Auth.updateUserAttributes(cognitoUser, user);
-    });
+      .then((cognitoUser: any) => {
+        return Auth.updateUserAttributes(cognitoUser, user);
+      });
   }
+
+  // una added this
+
+  // public getJWTToken(): any {
+  //   Auth.currentSession().then(data => {
+  //     console.log(data.getAccessToken().getJwtToken());
+  //     return data.getAccessToken().getJwtToken()
+  //   })
+  //   .catch(err => {
+  //     console.log('noon logged in');
+  //     return null
+  //   })
+  // }
+  public async getJWTToken(): Promise<any>{
+    try {
+      const data = await Auth.currentSession();
+      return data.getAccessToken().getJwtToken();
+    } catch (err) {
+      console.log('noone logged in');
+      return null;
+    }
+  }
+
 
 }
