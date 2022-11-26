@@ -67,11 +67,14 @@ return from(this.handle(request ,next))
 
         console.log(`Bearer Una ${jwt}`);
 
-    
+        const isApiUrl = request.url.startsWith(environment.apiUri);
+
+        if (isApiUrl && jwt) {
         request = request.clone({
             withCredentials: false,
              setHeaders: { Authorization: `Bearer ${jwt}` }
         })
+    }
     
         return await lastValueFrom(next.handle(request));
       }
