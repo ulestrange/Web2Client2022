@@ -97,7 +97,7 @@ export class CognitoService {
       const data = await Auth.currentSession();
       return data.getAccessToken().getJwtToken();
     } catch (err) {
-      console.log('noone logged in');
+      console.log('no-one logged in');
       return null;
     }
   }
