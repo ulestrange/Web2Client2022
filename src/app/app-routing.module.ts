@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookListComponent } from './book/book-list/book-list.component';
 
 import { ProfileComponent } from './user//profile/profile.component';
 import { SignInComponent } from './user//sign-in/sign-in.component';
@@ -10,6 +11,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'signIn',
     pathMatch: 'full',
+  },
+  {
+    path: 'books',
+    component: BookListComponent,
   },
   {
     path: 'profile',
