@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
-  apiUri : 'http://localhost:3000'
+  apiUri: 'http://localhost:3000',
+  auth0:
+  {
+    domain: 'dev-htjrdxyu2p87zjsm.us.auth0.com',
+    clientId: 'pXQeGXZ6zu8OspC2yd0IFp5NZgQk20tC',
+    callback_URL: 'localhost:4200/callback'
+  }
 };
 
 /*
