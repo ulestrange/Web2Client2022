@@ -12,6 +12,7 @@ export class SignInComponent {
 
   loading: boolean;
   user: IUser;
+  message: String = "";
 
   constructor(private router: Router,
               private cognitoService: CognitoService) {
@@ -24,9 +25,15 @@ export class SignInComponent {
     this.cognitoService.signIn(this.user)
     .then(() => {
       this.router.navigate(['/profile']);
-    }).catch(() => {
+    }).catch((error) => {
+      this.message = error.message;
       this.loading = false;
     });
+  }
+
+
+  dismissAlert() {
+    this.message = "";
   }
 
 }

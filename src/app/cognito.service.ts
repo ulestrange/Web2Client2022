@@ -83,24 +83,14 @@ export class CognitoService {
       });
   }
 
-  // una added this
+  // una added this - this is so that the interceptor can get the token to send to the backend.
 
-  // public getJWTToken(): any {
-  //   Auth.currentSession().then(data => {
-  //     console.log(data.getAccessToken().getJwtToken());
-  //     return data.getAccessToken().getJwtToken()
-  //   })
-  //   .catch(err => {
-  //     console.log('noon logged in');
-  //     return null
-  //   })
-  // }
+
   public async getJWTToken(): Promise<any>{
     try {
       const data = await Auth.currentSession();
       return data.getAccessToken().getJwtToken();
     } catch (err) {
-      console.log('no-one logged in');
       return null;
     }
   }

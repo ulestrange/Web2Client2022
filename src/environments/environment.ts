@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   apiUri : 'http://localhost:3000',
   cognito: {
-    userPoolId: 'us-east-1_KSe2yVHuX',
-    userPoolWebClientId: '2131mvph3s7m9e99l77lnuk069',
+    userPoolId: 'us-east-1_p3ByLuBoh',
+   // userPoolWebClientId: '2131mvph3s7m9e99l77lnuk069',
+   userPoolWebClientId: '1h3ooa3vpkp6rbnbmgujf6vpot'
   },
 };
 
