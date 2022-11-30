@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {  HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { AuthModule } from '@auth0/auth0-angular';
+import {AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,9 +38,16 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AuthModule.forRoot({...environment.auth0,})
+    AuthModule.forRoot({...environment.auth0,
+      httpInterceptor: {
+        allowedList: [`${environment.apiUri}/books`],
+      },})
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthHttpInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

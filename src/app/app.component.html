@@ -1,11 +1,23 @@
 <h1>2022 Client Application for worksheets
 </h1>
 
-<app-auth-button></app-auth-button>
+<!-- <app-auth-button></app-auth-button> -->
 
-<app-sign-up></app-sign-up>
+<div class="nav-bar__buttons">
+    <ng-container *ngIf="isAuthenticated$ | async; else loggedOut">
+        <button (click)="auth.logout({ returnTo: document.location.origin })">
+            Log out
+        </button>
+    </ng-container>
 
-<app-profile></app-profile>
+    <ng-template #loggedOut>
+        <button (click)="auth.loginWithRedirect()">Log in</button>
+    </ng-template>
+</div>
+
+
+
+<!-- <app-profile></app-profile>  -->
 
 <app-book-list></app-book-list>
 
