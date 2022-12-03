@@ -58,6 +58,7 @@ export class BookListComponent implements OnInit {
           next: book => {
             console.log(JSON.stringify(book) + ' has been delettted');
             this.message = "book has been delettteed";
+            this.ngOnInit();
           },
           error: (err) => this.message = err
         });
@@ -65,7 +66,7 @@ export class BookListComponent implements OnInit {
 
     // so the updated list appears
 
-    this.ngOnInit();
+  
     this.currentBook=undefined;
 
   }
@@ -78,12 +79,13 @@ export class BookListComponent implements OnInit {
         next: book => {
           console.log(JSON.stringify(book) + ' has been updated');
           this.message = " book has been updated";
-        },
+           this.ngOnInit();     
+          this.currentBook = undefined   },
         error: (err) => this.message = err
       });
     // so the updated list appears
 
-    this.ngOnInit();
+   
   }
 
 
@@ -109,13 +111,14 @@ export class BookListComponent implements OnInit {
         next: book => {
           console.log(JSON.stringify(book) + ' has been added');
           this.message = "new book has been added";
+          this.ngOnInit();
         },
         error: (err) => this.message = err
       });
 
     // so the updated list appears
 
-   this.ngOnInit();
+  
   }
 
   
