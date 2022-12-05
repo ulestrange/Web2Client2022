@@ -15,9 +15,10 @@ import { BookRowComponent } from './book/book-row/book-row.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BookFormComponent } from './book/book-form/book-form.component';
 import { environment } from 'src/environments/environment';
-import { CallbackComponent } from './user/callback/callback.component';
+
 import { ProfileComponent } from './user/profile/profile.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,8 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     BookDetailsComponent,
     BookRowComponent,
     BookFormComponent,
-    CallbackComponent,
     ProfileComponent,
-    SignUpComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -10,9 +11,20 @@ import { AuthService } from '@auth0/auth0-angular';
 export class AppComponent {
   title = 'ClientApp2022';
 
-  isAuthenticated$ = this.auth.isAuthenticated$
+  isAuthenticated$ = this.authService.isAuthenticated$
 
+  constructor(private router: Router, public authService: AuthService) {
 
-  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+  }
 
+  handleLogout() {
+    this.authService.logout()
+  }
+  
+  handleLogin() {
+    this.authService.loginWithRedirect({appState: { target: '/profile',}})
+  }
+  handleSignUp() {
+    this.authService.loginWithRedirect({screen_hint:"signup"})
+  }
 }
