@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { ProfileComponent } from './user/profile/profile.component';
 
 import { HomeComponent } from './home/home.component';
+import { FbtestComponent } from './fbtest/fbtest.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     BookRowComponent,
     BookFormComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    FbtestComponent
   ],
   imports: [
     BrowserModule,

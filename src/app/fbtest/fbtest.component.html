@@ -1,0 +1,30 @@
+<p>fbtest works!</p>
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form-group" class="container-md">
+
+    <div class="mb-3">
+        <label for="title"> Title</label>
+        <input id="title" type="text" formControlName="title" class="form-control">
+    </div>
+    <div formArrayName="tags">
+    <div class="mb-3" *ngFor="let tag of tags.controls; let i = index">
+        <div [formGroupName] = "i" class="mb-3">
+            <label for="tag"> Tag {{i+1}}</label>
+            <input id="tag" type="text" formControlName="tag" class="form-control">
+            <button class="delete-btn" (click)="deleteTagGroup(i)">
+                delete_forever</button>
+        </div>
+    </div>
+</div>
+
+<button type="button" (click)="addTagGroup()" >Add Tag</button>
+
+    <button type="submit">Submit</button>
+
+   
+
+
+
+
+</form>
